@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with SaaS subscription role.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "subscription": { "type": "string", "enum": ["free", "pro"] },
+        "subscriptionExpires": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "role", "subscription", "createdAt"]
+    },
+    "UsageRecord": {
+      "title": "UsageRecord",
+      "description": "Daily usage record of actions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "date": { "type": "string" },
+        "count": { "type": "number" },
+        "actions": { "type": "array" }
+      },
+      "required": ["id", "uid", "date", "count", "actions"]
+    },
+    "ToolHistoryItem": {
+      "title": "ToolHistoryItem",
+      "description": "Historical log item for tool execution.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "toolId": { "type": "string" },
+        "toolName": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "uid", "timestamp", "toolId", "toolName", "fileName", "fileSize", "status"]
+    },
+    "FeedbackItem": {
+      "title": "FeedbackItem",
+      "description": "Feedback or support tickets submitted by users.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "message": { "type": "string" },
+        "rating": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "email", "message", "rating", "timestamp"]
+    },
+    "TransactionItem": {
+      "title": "TransactionItem",
+      "description": "Subscription payment transaction records.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "amount": { "type": "number" },
+        "plan": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "uid", "email", "amount", "plan", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Users profiles database"
+    },
+    "usage/{usageId}": {
+      "schema": "UsageRecord",
+      "description": "Daily usage logs"
+    },
+    "history/{historyId}": {
+      "schema": "ToolHistoryItem",
+      "description": "Execution log items"
+    },
+    "feedback/{feedbackId}": {
+      "schema": "FeedbackItem",
+      "description": "Support feedback messages"
+    },
+    "transactions/{transactionId}": {
+      "schema": "TransactionItem",
+      "description": "Billing transaction details"
+    }
+  }
+}

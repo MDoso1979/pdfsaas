@@ -1,0 +1,6 @@
+{
+  "name": "PDF & Image Tools SaaS Platform",
+  "description": "A modern, professional SaaS platform for merging, splitting, compressing PDFs, PDF to Word, Word to PDF, image conversion, and image-to-PDF tools. Features usage tracking, subscription management, user authentication, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
